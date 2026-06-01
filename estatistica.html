@@ -1,2 +1,298 @@
-<!DOCTYPE html><html><body><h1>Estatística Aplicada ao GPS</h1>
-<p>Média, variância, desvio padrão e correção de erros.</p></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Estatística Aplicada ao GPS | GeoMath</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+body{
+background:#020617;
+color:white;
+font-family:Arial,sans-serif;
+}
+
+.card{
+background:#111827;
+padding:30px;
+border-radius:20px;
+margin-bottom:25px;
+}
+
+canvas{
+background:#0f172a;
+padding:20px;
+border-radius:20px;
+}
+
+.hero{
+padding-top:120px;
+padding-bottom:80px;
+text-align:center;
+background:
+linear-gradient(
+135deg,
+#0f172a,
+#020617
+);
+}
+
+.valor{
+font-size:2rem;
+font-weight:bold;
+color:#22d3ee;
+}
+
+</style>
+
+</head>
+
+<body>
+  <section class="hero">
+
+<h1 class="text-6xl font-bold">
+
+Estatística Aplicada ao GPS
+
+</h1>
+
+<p class="text-slate-400 text-xl mt-4">
+
+Como os sistemas de navegação corrigem erros e aumentam a precisão
+
+</p>
+
+</section>
+<div class="card">
+
+<h2 class="text-4xl font-bold mb-5">
+
+Por que o GPS erra?
+
+</h2>
+
+<p>
+
+O GPS não recebe sinais perfeitos.
+
+Diversos fatores podem introduzir erros:
+
+</p>
+
+<ul class="list-disc ml-8 mt-5">
+
+<li>Atmosfera terrestre</li>
+
+<li>Prédios altos</li>
+
+<li>Montanhas</li>
+
+<li>Condições climáticas</li>
+
+<li>Ruído eletrônico</li>
+
+<li>Reflexão de sinais</li>
+
+</ul>
+
+</div>
+<div class="card">
+
+<h2 class="text-4xl font-bold mb-5">
+
+Laboratório de Precisão GPS
+
+</h2>
+
+<button
+onclick="gerarDados()"
+class="bg-cyan-500 px-6 py-3 rounded">
+
+Gerar Nova Amostra
+
+</button>
+
+</div>
+<div class="grid md:grid-cols-3 gap-6">
+
+<div class="card">
+
+<h3>Média</h3>
+
+<div id="media" class="valor">
+0
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Variância</h3>
+
+<div id="variancia" class="valor">
+0
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Desvio Padrão</h3>
+
+<div id="desvio" class="valor">
+0
+</div>
+
+</div>
+
+</div>
+<div class="card">
+
+<canvas id="grafico"></canvas>
+
+</div>
+<script>
+
+let chart;
+
+function gerarDados(){
+
+const dados=[];
+
+for(let i=0;i<25;i++){
+
+dados.push(
+
+5 + (Math.random()*6-3)
+
+);
+
+}
+
+const media =
+dados.reduce(
+(a,b)=>a+b
+)/dados.length;
+
+const variancia =
+dados.reduce(
+(acc,v)=>
+acc+Math.pow(v-media,2),
+0
+)/dados.length;
+
+const desvio =
+Math.sqrt(variancia);
+
+document.getElementById(
+"media"
+).innerHTML=
+media.toFixed(2);
+
+document.getElementById(
+"variancia"
+).innerHTML=
+variancia.toFixed(2);
+
+document.getElementById(
+"desvio"
+).innerHTML=
+desvio.toFixed(2);
+
+if(chart){
+
+chart.destroy();
+
+}
+
+chart =
+new Chart(
+
+document.getElementById(
+"grafico"
+),
+
+{
+
+type:"line",
+
+data:{
+
+labels:
+dados.map((_,i)=>
+"Amostra "+(i+1)
+),
+
+datasets:[{
+
+label:
+"Erro GPS (m)",
+
+data:dados
+
+}]
+
+}
+
+}
+
+);
+
+}
+
+gerarDados();
+
+</script>
+<div class="card">
+
+<h2 class="text-4xl font-bold mb-5">
+
+Filtro de Kalman
+
+</h2>
+
+<p>
+
+O Filtro de Kalman é um algoritmo matemático utilizado para estimar valores reais a partir de medições com ruído.
+
+</p>
+
+<br>
+
+<p>
+
+Ele é amplamente utilizado em:
+
+</p>
+
+<ul class="list-disc ml-8">
+
+<li>GPS</li>
+
+<li>Drones</li>
+
+<li>Aeronaves</li>
+
+<li>Robôs</li>
+
+<li>Satélites</li>
+
+</ul>
+
+<br>
+
+<p>
+
+Seu objetivo é combinar medições sucessivas para produzir uma estimativa mais precisa da posição real.
+
+</p>
+
+</div>

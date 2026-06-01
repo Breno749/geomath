@@ -1,0 +1,1 @@
+console.log('GeoMath v1');

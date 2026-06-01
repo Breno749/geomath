@@ -1,2 +1,2 @@
-# GeoMath
-Projeto acadêmico sobre Matemática Computacional aplicada ao GPS.
+# GeoMath v1
+Projeto acadêmico.

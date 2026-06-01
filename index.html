@@ -1,26 +1,124 @@
 <!DOCTYPE html>
-<html lang='pt-BR'><head>
-<meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
-<title>GeoMath</title>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GeoMath | Matemática Computacional Aplicada ao GPS</title>
+
 <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#020617;
+color:white;
+font-family:Arial,sans-serif;
+margin:0;
+}
+
+.hero{
+background:
+linear-gradient(
+135deg,
+#0f172a,
+#020617,
+#0f172a
+);
+}
+
+.card{
+background:#111827;
+border-radius:20px;
+padding:25px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 0 30px rgba(34,211,238,.25);
+}
+
+</style>
+
 </head>
-<body class="bg-slate-950 text-white">
-<nav class="p-4 bg-black sticky top-0">
-<a href="index.html">Início</a> |
-<a href="matematica-computacional.html">Matemática Computacional</a> |
-<a href="trilateracao.html">Trilateração</a> |
-<a href="coordenadas.html">Coordenadas</a> |
-<a href="estatistica.html">Estatística</a> |
-<a href="dashboard.html">Dashboard</a>
-</nav>
-<section class="max-w-5xl mx-auto p-10 text-center">
-<h1 class="text-5xl font-bold">GeoMath</h1>
-<p class="mt-4">Matemática Computacional Aplicada ao GPS</p>
-<div class="mt-8 grid md:grid-cols-3 gap-4">
-<div class="card">GPS</div>
-<div class="card">Algoritmos</div>
-<div class="card">Estatística</div>
+
+<body>
+
+<nav class="fixed top-0 w-full bg-black/60 backdrop-blur-md z-50">
+
+<div class="max-w-7xl mx-auto flex justify-between p-5">
+
+<h1 class="font-bold text-cyan-400 text-2xl">
+GeoMath
+</h1>
+
+<div class="space-x-6 text-sm">
+
+<a href="index.html">Início</a>
+
+<a href="matematica-computacional.html">
+Matemática Computacional
+</a>
+
+<a href="trilateracao.html">
+Trilateração
+</a>
+
+<a href="coordenadas.html">
+Coordenadas
+</a>
+
+<a href="estatistica.html">
+Estatística
+</a>
+
+<a href="dashboard.html">
+Dashboard
+</a>
+
 </div>
+
+</div>
+
+</nav>
+
+<section class="hero min-h-screen flex items-center justify-center text-center px-8">
+
+<div>
+
+<h1 class="text-6xl font-bold mb-6">
+GeoMath
+</h1>
+
+<p class="text-2xl text-slate-300 mb-8">
+Matemática Computacional Aplicada ao GPS
+</p>
+
+<p class="max-w-3xl mx-auto text-slate-400">
+
+Projeto acadêmico que demonstra como algoritmos,
+métodos numéricos, estatística e sistemas de equações
+são utilizados para determinar posições através de satélites.
+
+</p>
+
+<a href="matematica-computacional.html">
+
+<button class="bg-cyan-500 mt-8 px-8 py-3 rounded-xl">
+
+Explorar Plataforma
+
+</button>
+
+</a>
+
+</div>
+
 </section>
-</body></html>

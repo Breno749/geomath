@@ -1,3 +1,318 @@
-<!DOCTYPE html><html><body><h1>Trilateração</h1>
-<p>1 satélite: esfera. 2 satélites: interseção. 3 satélites: posições possíveis. 4 satélites: posição exata.</p>
-</body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Trilateração | GeoMath</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+body{
+background:#020617;
+color:white;
+font-family:Arial,sans-serif;
+}
+
+.card{
+background:#111827;
+padding:25px;
+border-radius:20px;
+margin-bottom:25px;
+}
+
+canvas{
+background:#000814;
+border-radius:20px;
+}
+
+.sat{
+color:#38bdf8;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="fixed top-0 w-full bg-black/70 backdrop-blur">
+
+<div class="max-w-7xl mx-auto flex justify-between p-5">
+
+<h1 class="text-cyan-400 text-2xl font-bold">
+
+GeoMath
+
+</h1>
+
+<div class="space-x-6">
+
+<a href="index.html">Início</a>
+
+<a href="matematica-computacional.html">
+Matemática Computacional
+</a>
+
+<a href="coordenadas.html">
+Coordenadas
+</a>
+
+<a href="estatistica.html">
+Estatística
+</a>
+
+<a href="dashboard.html">
+Dashboard
+</a>
+
+</div>
+
+</div>
+
+</nav>
+
+<section class="pt-32 max-w-7xl mx-auto px-8">
+
+<h1 class="text-5xl font-bold mb-6">
+
+Trilateração
+
+</h1>
+
+<p class="text-slate-400 text-xl">
+
+Como o GPS encontra sua posição usando satélites.
+
+</p>
+
+</section>
+<section class="max-w-6xl mx-auto p-8">
+
+<div class="card">
+
+<h2 class="text-3xl font-bold mb-5">
+
+1 Satélite
+
+</h2>
+
+<p>
+
+Com apenas um satélite sabemos apenas que o usuário
+está em algum ponto da superfície de uma esfera.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2 class="text-3xl font-bold mb-5">
+
+2 Satélites
+
+</h2>
+
+<p>
+
+A interseção de duas esferas forma uma circunferência.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2 class="text-3xl font-bold mb-5">
+
+3 Satélites
+
+</h2>
+
+<p>
+
+A interseção gera dois pontos possíveis.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2 class="text-3xl font-bold mb-5">
+
+4 Satélites
+
+</h2>
+
+<p>
+
+O quarto satélite elimina ambiguidades e corrige o relógio do receptor.
+
+</p>
+
+</div>
+
+</section>
+<section class="max-w-7xl mx-auto p-8">
+
+<div class="grid md:grid-cols-3 gap-6">
+
+<div class="md:col-span-2">
+
+<canvas
+id="gpsCanvas"
+width="800"
+height="500">
+</canvas>
+
+</div>
+
+<div>
+
+<div class="card">
+
+<h2 class="text-2xl font-bold mb-4">
+
+Satélites
+
+</h2>
+
+<div id="dados"></div>
+
+<button
+onclick="novaSimulacao()"
+class="mt-6 bg-cyan-500 px-4 py-2 rounded">
+
+Nova Simulação
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+const canvas =
+document.getElementById("gpsCanvas");
+
+const ctx =
+canvas.getContext("2d");
+
+const sats = [
+
+{x:100,y:100},
+{x:700,y:100},
+{x:700,y:400},
+{x:100,y:400}
+
+];
+
+function desenhar(){
+
+ctx.clearRect(0,0,800,500);
+
+sats.forEach((s,i)=>{
+
+ctx.beginPath();
+
+ctx.arc(
+s.x,
+s.y,
+10,
+0,
+Math.PI*2
+);
+
+ctx.fillStyle="#38bdf8";
+ctx.fill();
+
+ctx.fillText(
+"SAT "+(i+1),
+s.x+15,
+s.y
+);
+
+});
+
+let px =
+Math.random()*500+150;
+
+let py =
+Math.random()*250+125;
+
+ctx.beginPath();
+
+ctx.arc(
+px,
+py,
+8,
+0,
+Math.PI*2
+);
+
+ctx.fillStyle="red";
+ctx.fill();
+
+let html="";
+
+sats.forEach((s,i)=>{
+
+let d =
+Math.hypot(
+px-s.x,
+py-s.y
+).toFixed(2);
+
+ctx.beginPath();
+
+ctx.moveTo(s.x,s.y);
+
+ctx.lineTo(px,py);
+
+ctx.strokeStyle="#334155";
+
+ctx.stroke();
+
+html +=
+`<p>
+Satélite ${i+1}: ${d}
+</p>`;
+
+});
+
+document
+.getElementById("dados")
+.innerHTML = html;
+
+}
+
+function novaSimulacao(){
+
+desenhar();
+
+}
+
+desenhar();
+
+</script>
+<footer class="bg-black text-center p-10 mt-10">
+
+GeoMath © 2026
+
+</footer>
+
+</body>
+
+</html>

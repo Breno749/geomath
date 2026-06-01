@@ -1,2 +1,352 @@
-<!DOCTYPE html><html><body><h1>Coordenadas Geográficas</h1>
-<p>Latitude, longitude, altitude e sistema WGS84.</p></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Coordenadas Geográficas | GeoMath</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link
+rel="stylesheet"
+href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+<script
+src="https://unpkg.com/leaflet/dist/leaflet.js">
+</script>
+
+<style>
+
+body{
+background:#020617;
+color:white;
+font-family:Arial,sans-serif;
+}
+
+.card{
+background:#111827;
+padding:25px;
+border-radius:20px;
+margin-bottom:25px;
+}
+
+#map{
+height:500px;
+border-radius:20px;
+}
+
+.hero{
+padding-top:120px;
+padding-bottom:80px;
+text-align:center;
+background:
+linear-gradient(
+135deg,
+#0f172a,
+#020617
+);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="fixed top-0 w-full bg-black/70 backdrop-blur">
+
+<div class="max-w-7xl mx-auto flex justify-between p-5">
+
+<h1 class="text-cyan-400 text-2xl font-bold">
+
+GeoMath
+
+</h1>
+
+<div class="space-x-6">
+
+<a href="index.html">Início</a>
+
+<a href="matematica-computacional.html">
+Matemática Computacional
+</a>
+
+<a href="trilateracao.html">
+Trilateração
+</a>
+
+<a href="estatistica.html">
+Estatística
+</a>
+
+<a href="dashboard.html">
+Dashboard
+</a>
+
+</div>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+<h1 class="text-6xl font-bold mb-5">
+
+Coordenadas Geográficas
+
+</h1>
+
+<p class="text-slate-400 text-xl">
+
+Como a Terra é representada matematicamente
+
+</p>
+
+</section>
+
+<section class="max-w-6xl mx-auto p-8">
+
+<div class="card">
+
+<h2 class="text-3xl font-bold mb-4">
+
+Latitude
+
+</h2>
+
+<p>
+
+Latitude é a distância angular de um ponto em relação ao Equador.
+
+</p>
+
+<br>
+
+<p>
+
+Varia de:
+
+</p>
+
+<ul class="list-disc ml-8 mt-4">
+
+<li>0° → Equador</li>
+
+<li>90° Norte</li>
+
+<li>90° Sul</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h2 class="text-3xl font-bold mb-4">
+
+Longitude
+
+</h2>
+
+<p>
+
+Longitude é a distância angular em relação ao Meridiano de Greenwich.
+
+</p>
+
+<br>
+
+<p>
+
+Varia entre:
+
+</p>
+
+<ul class="list-disc ml-8 mt-4">
+
+<li>180° Oeste</li>
+
+<li>180° Leste</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h2 class="text-3xl font-bold mb-4">
+
+Altitude
+
+</h2>
+
+<p>
+
+Altitude representa a altura em relação ao nível médio do mar.
+
+</p>
+
+<p class="mt-4">
+
+O GPS calcula também essa terceira dimensão.
+
+</p>
+
+</div>
+
+</section>
+
+<section class="max-w-6xl mx-auto p-8">
+
+<div class="card">
+
+<h2 class="text-3xl font-bold mb-4">
+
+Sistema WGS84
+
+</h2>
+
+<p>
+
+O sistema WGS84 é o padrão mundial utilizado pelos satélites GPS.
+
+</p>
+
+<br>
+
+<p>
+
+Ele define:
+
+</p>
+
+<ul class="list-disc ml-8 mt-4">
+
+<li>Formato da Terra</li>
+
+<li>Posição dos satélites</li>
+
+<li>Sistema global de coordenadas</li>
+
+</ul>
+
+</div>
+
+</section>
+
+<section class="max-w-6xl mx-auto p-8">
+
+<div class="card">
+
+<h2 class="text-3xl font-bold mb-4">
+
+Mapa Interativo
+
+</h2>
+
+<div id="map"></div>
+
+</div>
+
+</section>
+
+<section class="max-w-6xl mx-auto p-8">
+
+<div class="card">
+
+<h2 class="text-3xl font-bold mb-4">
+
+Minha Localização
+
+</h2>
+
+<div id="dados">
+
+Obtendo localização...
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+const map = L.map('map')
+.setView([-23.5505,-46.6333],12);
+
+L.tileLayer(
+'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+).addTo(map);
+
+let marker =
+L.marker([-23.5505,-46.6333])
+.addTo(map);
+
+marker.bindPopup(
+"GeoMath"
+);
+
+if(navigator.geolocation){
+
+navigator.geolocation.getCurrentPosition(
+
+(pos)=>{
+
+const lat =
+pos.coords.latitude;
+
+const lng =
+pos.coords.longitude;
+
+const alt =
+pos.coords.altitude;
+
+map.setView([lat,lng],15);
+
+marker.setLatLng([lat,lng]);
+
+marker.bindPopup(
+"Você está aqui"
+).openPopup();
+
+document.getElementById(
+"dados"
+).innerHTML =
+
+`
+Latitude: ${lat}<br>
+Longitude: ${lng}<br>
+Altitude: ${alt}
+`;
+
+},
+
+()=>{
+
+document.getElementById(
+"dados"
+).innerHTML =
+
+"Permissão negada.";
+
+}
+
+);
+
+}
+
+</script>
+
+<footer class="bg-black text-center p-10 mt-10">
+
+GeoMath © 2026
+
+</footer>
+
+</body>
+</html>

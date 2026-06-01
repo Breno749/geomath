@@ -1,3 +1,531 @@
-<!DOCTYPE html><html><body><h1>Matemática Computacional</h1>
-<p>Explica métodos numéricos, algoritmos, matrizes, sistemas de equações, erros numéricos e aplicações no GPS.</p>
-</body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Matemática Computacional | GeoMath</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+body{
+background:#020617;
+color:white;
+font-family:Arial,sans-serif;
+}
+
+.card{
+background:#111827;
+padding:30px;
+border-radius:20px;
+margin-bottom:30px;
+}
+
+.hero{
+padding-top:120px;
+padding-bottom:80px;
+text-align:center;
+background:
+linear-gradient(
+135deg,
+#0f172a,
+#020617
+);
+}
+
+pre{
+background:#000;
+padding:20px;
+border-radius:10px;
+overflow:auto;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- MENU -->
+
+<nav class="fixed top-0 w-full bg-black/70 backdrop-blur-md">
+
+<div class="max-w-7xl mx-auto flex justify-between p-5">
+
+<h1 class="text-cyan-400 text-2xl font-bold">
+
+GeoMath
+
+</h1>
+
+<div class="space-x-6">
+
+<a href="index.html">Início</a>
+
+<a href="trilateracao.html">
+Trilateração
+</a>
+
+<a href="coordenadas.html">
+Coordenadas
+</a>
+
+<a href="estatistica.html">
+Estatística
+</a>
+
+<a href="dashboard.html">
+Dashboard
+</a>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1 class="text-6xl font-bold mb-5">
+
+Matemática Computacional
+
+</h1>
+
+<p class="text-xl text-slate-400">
+
+O cérebro matemático por trás do GPS
+
+</p>
+
+</section>
+
+<!-- DEFINIÇÃO -->
+
+<section class="max-w-6xl mx-auto p-8">
+
+<div class="card">
+
+<h2 class="text-4xl font-bold mb-5">
+
+O que é Matemática Computacional?
+
+</h2>
+
+<p>
+
+A Matemática Computacional é a área da matemática
+que desenvolve métodos para resolver problemas
+utilizando computadores.
+
+</p>
+
+<br>
+
+<p>
+
+Seu objetivo é transformar problemas matemáticos
+complexos em algoritmos que possam ser executados
+de forma rápida e eficiente.
+
+</p>
+
+<br>
+
+<p>
+
+Ela está presente em:
+
+</p>
+
+<ul class="list-disc ml-8 mt-4">
+
+<li>GPS</li>
+
+<li>Inteligência Artificial</li>
+
+<li>Engenharia</li>
+
+<li>Mercado Financeiro</li>
+
+<li>Computação Gráfica</li>
+
+<li>Previsão do Tempo</li>
+
+<li>Robótica</li>
+
+</ul>
+
+</div>
+
+</section>
+
+<!-- GPS -->
+
+<section class="max-w-6xl mx-auto p-8">
+
+<div class="card">
+
+<h2 class="text-4xl font-bold mb-5">
+
+Por que o GPS precisa dela?
+
+</h2>
+
+<p>
+
+Quando o GPS recebe sinais dos satélites,
+ele precisa descobrir sua posição.
+
+</p>
+
+<br>
+
+<p>
+
+Para isso o sistema calcula:
+
+</p>
+
+<ul class="list-disc ml-8 mt-4">
+
+<li>Distâncias</li>
+
+<li>Tempo dos sinais</li>
+
+<li>Posição dos satélites</li>
+
+<li>Correções de erro</li>
+
+<li>Coordenadas finais</li>
+
+</ul>
+
+<br>
+
+<p>
+
+Tudo isso ocorre em poucos segundos.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- MÉTODOS NUMÉRICOS -->
+
+<section class="max-w-6xl mx-auto p-8">
+
+<div class="card">
+
+<h2 class="text-4xl font-bold mb-5">
+
+Métodos Numéricos
+
+</h2>
+
+<p>
+
+Muitos problemas matemáticos não possuem
+solução exata simples.
+
+</p>
+
+<br>
+
+<p>
+
+Por isso os computadores utilizam métodos
+numéricos para encontrar aproximações.
+
+</p>
+
+<br>
+
+<p>
+
+Esses métodos são fundamentais para o GPS.
+
+</p>
+
+<h3 class="text-2xl font-bold mt-8 mb-3">
+
+Exemplo
+
+</h3>
+
+<p>
+
+O computador faz tentativas sucessivas
+até atingir um resultado suficientemente preciso.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- SISTEMAS -->
+
+<section class="max-w-6xl mx-auto p-8">
+
+<div class="card">
+
+<h2 class="text-4xl font-bold mb-5">
+
+Sistemas de Equações
+
+</h2>
+
+<p>
+
+Cada satélite gera uma equação matemática.
+
+</p>
+
+<br>
+
+<p>
+
+Quando vários satélites são utilizados,
+surge um sistema de equações.
+
+</p>
+
+<br>
+
+<p>
+
+Resolver esse sistema permite descobrir
+a posição do usuário.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- MATRIZES -->
+
+<section class="max-w-6xl mx-auto p-8">
+
+<div class="card">
+
+<h2 class="text-4xl font-bold mb-5">
+
+Matrizes
+
+</h2>
+
+<p>
+
+As matrizes organizam grandes quantidades
+de números e equações.
+
+</p>
+
+<br>
+
+<p>
+
+Elas tornam os cálculos muito mais rápidos.
+
+</p>
+
+<pre>
+
+| 1 2 3 |
+
+| 4 5 6 |
+
+| 7 8 9 |
+
+</pre>
+
+</div>
+
+</section>
+
+<!-- ALGORITMOS -->
+
+<section class="max-w-6xl mx-auto p-8">
+
+<div class="card">
+
+<h2 class="text-4xl font-bold mb-5">
+
+Algoritmos
+
+</h2>
+
+<p>
+
+Um algoritmo é uma sequência lógica
+de passos para resolver um problema.
+
+</p>
+
+<pre>
+
+Receber sinais
+
+↓
+
+Calcular distâncias
+
+↓
+
+Montar equações
+
+↓
+
+Resolver sistema
+
+↓
+
+Corrigir erros
+
+↓
+
+Mostrar posição
+
+</pre>
+
+</div>
+
+</section>
+
+<!-- ERROS -->
+
+<section class="max-w-6xl mx-auto p-8">
+
+<div class="card">
+
+<h2 class="text-4xl font-bold mb-5">
+
+Erros Numéricos
+
+</h2>
+
+<p>
+
+Nenhum sistema é perfeito.
+
+</p>
+
+<br>
+
+<p>
+
+Os erros podem surgir por:
+
+</p>
+
+<ul class="list-disc ml-8 mt-4">
+
+<li>Atmosfera</li>
+
+<li>Prédios</li>
+
+<li>Reflexão de sinais</li>
+
+<li>Ruídos eletrônicos</li>
+
+</ul>
+
+</div>
+
+</section>
+
+<!-- COMPLEXIDADE -->
+
+<section class="max-w-6xl mx-auto p-8">
+
+<div class="card">
+
+<h2 class="text-4xl font-bold mb-5">
+
+Complexidade Computacional
+
+</h2>
+
+<p>
+
+Mede o esforço necessário para executar
+um algoritmo.
+
+</p>
+
+<br>
+
+<p>
+
+O GPS realiza milhões de cálculos
+por segundo.
+
+</p>
+
+<br>
+
+<p>
+
+Por isso são necessários algoritmos
+altamente otimizados.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- CONCLUSÃO -->
+
+<section class="max-w-6xl mx-auto p-8">
+
+<div class="card">
+
+<h2 class="text-4xl font-bold mb-5">
+
+Conclusão
+
+</h2>
+
+<p>
+
+O GPS é um dos maiores exemplos
+de aplicação prática da Matemática Computacional.
+
+</p>
+
+<br>
+
+<p>
+
+Sem métodos numéricos,
+sistemas de equações,
+matrizes,
+algoritmos e estatística,
+o GPS moderno não existiria.
+
+</p>
+
+</div>
+
+</section>
+
+<footer class="bg-black text-center p-10">
+
+GeoMath © 2026
+
+</footer>
+
+</body>
+
+</html>
